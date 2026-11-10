@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ERP One-Click Login — Settings</title>
+<style>
+  :root { --blue: #17408c; --muted: #5b6472; --line: #dfe4ec; }
+  body { margin: 0; background: #f6f8fb; font: 14px/1.5 system-ui, sans-serif; color: #1b1f24; }
+  main { max-width: 560px; margin: 32px auto; padding: 0 16px; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0 0 20px; }
+  section { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+  h2 { font-size: 14px; margin: 0 0 10px; }
+  label { display: block; font-weight: 600; font-size: 13px; margin: 10px 0 4px; }
+  input[type=text], input[type=password], input[type=email] {
+    width: 100%; box-sizing: border-box; padding: 9px 10px; border: 1px solid var(--line); border-radius: 7px; font-size: 14px;
+  }
+  .row { display: flex; gap: 8px; align-items: center; }
+  .row input { flex: 1; }
+  button { border: 0; border-radius: 7px; padding: 9px 14px; font-weight: 600; cursor: pointer; background: #e8edf6; color: var(--blue); }
+  button.primary { background: var(--blue); color: #fff; padding: 11px 18px; }
+  .q { font-size: 13px; color: #1b1f24; margin: 12px 0 4px; font-weight: 600; }
+  .hint { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .check { display: flex; gap: 8px; align-items: center; font-weight: 400; }
+  #msg { margin-left: 10px; font-size: 13px; }
+  .ok { color: #1d7a3a; } .err { color: #b3261e; }
+</style>
+</head>
+<body>
+<main>
+  <h1>ERP One-Click Login</h1>
+  <p class="sub">Fill this once. Everything is saved only in this browser — nothing is sent anywhere except to ERP itself.</p>
+
+  <section>
+    <h2>1. ERP account</h2>
+    <label for="roll">Roll number</label>
+    <input id="roll" type="text" autocomplete="off" spellcheck="false">
+    <label for="password">ERP password</label>
+    <div class="row">
+      <input id="password" type="password" autocomplete="off">
+      <button id="togglePw" type="button">Show</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. Security questions</h2>
+    <button id="fetchQ" type="button">Fetch my questions from ERP</button>
+    <span id="qStatus" class="hint"></span>
+    <div id="qa"></div>
+    <div class="hint">ERP asks one of your 3 questions at random, so answer all three exactly as you set them on ERP.</div>
+  </section>
+
+  <section>
+    <h2>3. OTP from Gmail</h2>
+    <label for="gmail">Email address that receives ERP OTPs (optional)</label>
+    <input id="gmail" type="email" placeholder="e.g. yourname@kgpian.iitkgp.ac.in" spellcheck="false">
+    <div class="hint">Just be signed in to that inbox in this Chrome (open gmail.com once). The OTP is read from the unread-mail preview, so the email is never opened. Leave blank to check every signed-in Gmail account.</div>
+  </section>
+
+  <section>
+    <h2>4. Behaviour</h2>
+    <label class="check"><input id="enabled" type="checkbox"> Log in automatically whenever the ERP login page opens</label>
+  </section>
+
+  <button id="save" class="primary" type="button">Save</button><span id="msg"></span>
+</main>
+<script src="options.js"></script>
+</body>
+</html>

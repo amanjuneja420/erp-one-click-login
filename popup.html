@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { width: 260px; margin: 0; font: 14px/1.4 system-ui, sans-serif; color: #1b1f24; background: #f6f8fb; }
+  .wrap { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+  h1 { font-size: 15px; margin: 0; }
+  #status { font-size: 12px; color: #5b6472; }
+  button { border: 0; border-radius: 8px; padding: 12px; font-size: 15px; font-weight: 600; cursor: pointer; }
+  #login { background: #17408c; color: #fff; }
+  #login:hover { background: #12336f; }
+  #login:disabled { background: #9aa6bb; cursor: default; }
+  a { font-size: 12px; color: #17408c; text-align: center; cursor: pointer; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>ERP One-Click Login</h1>
+    <div id="status">Checking settings…</div>
+    <button id="login" disabled>Log in to ERP</button>
+    <a id="settings">Settings</a>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

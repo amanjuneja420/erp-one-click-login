@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "ERP One-Click Login (IIT KGP)",
+  "version": "1.3.0",
+  "description": "One click: fills roll, password, security answer, sends OTP, reads the OTP from Gmail and logs you in. Everything stays in your browser.",
+  "icons": { "16": "icons/icon16.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
+  "action": {
+    "default_title": "ERP One-Click Login",
+    "default_popup": "popup.html",
+    "default_icon": { "16": "icons/icon16.png", "48": "icons/icon48.png" }
+  },
+  "options_page": "options.html",
+  "permissions": ["storage", "scripting"],
+  "host_permissions": [
+    "https://erp.iitkgp.ac.in/*",
+    "https://mail.google.com/*"
+  ],
+  "background": { "service_worker": "background.js" },
+  "commands": {
+    "login-erp": {
+      "suggested_key": { "default": "Alt+Shift+E" },
+      "description": "Log in to ERP"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://erp.iitkgp.ac.in/SSOAdministration/login.htm*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
